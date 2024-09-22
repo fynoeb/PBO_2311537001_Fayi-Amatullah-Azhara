@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-	String id, nama, username, password;
+	String  nama, username, password, id;
 
 	public String getId() {
 		return id;
