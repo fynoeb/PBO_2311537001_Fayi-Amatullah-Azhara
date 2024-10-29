@@ -5,47 +5,39 @@ import java.util.List;
 import model.Service;
 
 public class TableService extends AbstractTableModel {
-    private List<Service> list;
-    private final String[] columns = {"ID", "Jenis", "Status", "Harga"};
+    private List<Service> services;
+    private String[] columnNames = {"ID", "Jenis", "Status", "Harga", "Quantity", "Harga per Unit"};
 
-    public TableService(List<Service> list) {
-        this.list = list;
+    public TableService(List<Service> services) {
+        this.services = services;
     }
 
     @Override
     public int getRowCount() {
-        return list.size();
+        return services.size();
     }
 
     @Override
     public int getColumnCount() {
-        return columns.length;
-    }
-
-    @Override
-    public String getColumnName(int column) {
-        return columns[column];
+        return columnNames.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Service service = list.get(rowIndex);
+        Service service = services.get(rowIndex);
         switch (columnIndex) {
-            case 0:
-                return service.getId();
-            case 1:
-                return service.getJenis();
-            case 2:
-                return service.getStatus();
-            case 3:
-                return service.getHarga();
-            default:
-                return null;
+            case 0: return service.getId();
+            case 1: return service.getJenis();
+            case 2: return service.getStatus();
+            case 3: return service.getHarga();
+            case 4: return service.getQuantity(); // Quantity
+            case 5: return service.getHargaPcs(); // Harga per unit
+            default: return null;
         }
     }
 
-    public void setList(List<Service> list) {
-        this.list = list;
-        fireTableDataChanged();
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
     }
 }
