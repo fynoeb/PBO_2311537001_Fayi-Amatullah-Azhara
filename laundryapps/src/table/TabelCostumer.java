@@ -48,4 +48,10 @@ public class TabelCostumer extends AbstractTableModel {
         this.list = list;
         fireTableDataChanged();
     }
+    
+    public Costumer getCostumerAt(int rowIndex) {
+
+        return list.get(rowIndex);
+
+    }
 }

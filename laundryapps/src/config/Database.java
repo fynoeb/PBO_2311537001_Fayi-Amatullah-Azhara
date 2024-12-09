@@ -22,4 +22,9 @@ public class Database {
         }
         return koneksi;
     }
+
+	public static Connection koneksi() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

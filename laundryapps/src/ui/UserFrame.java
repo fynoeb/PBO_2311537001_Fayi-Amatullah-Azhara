@@ -71,7 +71,7 @@ public class UserFrame extends JFrame {
      */
     public UserFrame() {
         usr = new UserRepo();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -111,7 +111,7 @@ public class UserFrame extends JFrame {
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (validateInput()) {
-                    User user = new User();
+                    User user = new User(selectedId, selectedId);
                     user.setNama(txtName.getText());
                     user.setUsername(txtUsername.getText());
                     user.setPassword(txtPassword.getText());
@@ -130,7 +130,7 @@ public class UserFrame extends JFrame {
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (selectedId != null && validateInput()) {
-                    User user = new User();
+                    User user = new User(selectedId, selectedId);
                     user.setId(selectedId);
                     user.setNama(txtName.getText());
                     user.setUsername(txtUsername.getText());

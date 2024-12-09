@@ -1,7 +1,15 @@
 package model;
 
 public class User {
-	String  nama, username, password, id;
+	String id, nama, username, password;
+	public User(String uname, String pass) {
+		this.username = uname;
+		this.password = pass;
+	}
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getId() {
 		return id;
@@ -33,23 +41,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-public static boolean login(String username, String password) {
-		boolean isLoggin = false;
-		User user = new User();
-		user.setId("1");
-		user.setNama("fulan");
-		user.setUsername("fulan");
-		user.setPassword("12345");
-		
-		if(user.getUsername().equalsIgnoreCase(username)
-				&& user.getPassword().equalsIgnoreCase(password)) {
-					isLoggin = true;
-				} else {
-					isLoggin = false;
-				}
-				return isLoggin;
 	}
 
 }
