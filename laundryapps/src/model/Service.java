@@ -2,13 +2,11 @@ package model;
 
 public class Service {
     private String id;
-    private String jenis;
+    private String jenis; 
     private String status;
     private double harga;
-    private int quantity; // Menambahkan atribut quantity
-    private double hargaPcs; // Menambahkan atribut harga per quantity
 
-    // Getter dan Setter untuk semua atribut
+    // Getter and Setter for all attributes
     public String getId() {
         return id;
     }
@@ -33,16 +31,6 @@ public class Service {
     public void setHarga(double harga) {
         this.harga = harga;
     }
-    public int getQuantity() { // Getter untuk quantity
-        return quantity;
-    }
-    public void setQuantity(int quantity) { // Setter untuk quantity
-        this.quantity = quantity;
-    }
-    public double getHargaPcs() { // Getter untuk harga per quantity
-        return hargaPcs;
-    }
-    public void setHargaPcs(double hargaPcs) { // Setter untuk harga per quantity
-        this.hargaPcs = hargaPcs;
-    }
+
+
 }

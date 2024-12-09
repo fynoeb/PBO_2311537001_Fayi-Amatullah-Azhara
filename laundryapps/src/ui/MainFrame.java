@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 
@@ -51,18 +53,50 @@ public class MainFrame extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnPesanan = new JButton("PESANAN");
+		btnPesanan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OrderFrame order = new OrderFrame();
+				order.setVisible(true);
+				OrderFrame.loadTable();
+				
+			}
+		});
 		btnPesanan.setBounds(63, 114, 173, 96);
 		contentPane.add(btnPesanan);
 		
 		JButton btnLayanan = new JButton("LAYANAN");
+		btnLayanan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ServiceFrame service = new ServiceFrame();
+				service.setVisible(true);
+				service.loadTable();
+				
+			}
+		});
 		btnLayanan.setBounds(248, 114, 173, 96);
 		contentPane.add(btnLayanan);
 		
 		JButton btnPelanggan = new JButton("PELANGGAN");
+		btnPelanggan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CostumerFrame cust = new CostumerFrame();
+				cust.setVisible(true);
+				cust.loadTable();
+				
+			}
+		});
 		btnPelanggan.setBounds(433, 114, 173, 96);
 		contentPane.add(btnPelanggan);
 		
 		JButton btnPengguna = new JButton("PENGGUNA");
+		btnPengguna.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserFrame user = new UserFrame();
+				user.setVisible(true);
+				user.loadTable();
+				
+			}
+		});
 		btnPengguna.setBounds(63, 239, 173, 96);
 		contentPane.add(btnPengguna);
 		
@@ -75,6 +109,13 @@ public class MainFrame extends JFrame {
 		contentPane.add(btnProfile);
 		
 		JButton btnKeluar = new JButton("KELUAR");
+		btnKeluar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginFrame login = new LoginFrame();
+				login.setVisible(true);
+				dispose();
+			}
+		});
 		btnKeluar.setBackground(new Color(242, 140, 247));
 		btnKeluar.setBounds(63, 362, 543, 81);
 		contentPane.add(btnKeluar);

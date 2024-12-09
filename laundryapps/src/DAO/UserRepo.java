@@ -45,7 +45,7 @@ public class UserRepo implements UserDAO {
         try (Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(select)) {
             while (rs.next()) {
-                User user = new User();
+                User user = new User(select, select);
                 user.setId(rs.getString("id"));
                 user.setNama(rs.getString("name"));
                 user.setUsername(rs.getString("username"));
