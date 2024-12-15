@@ -12,7 +12,7 @@ public class Database {
         if (koneksi == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");  
-                koneksi = DriverManager.getConnection("jdbc:mysql://localhost:3306/laundry_apps?useSSL=false&serverTimezone=UTC", "root", "");
+                koneksi = DriverManager.getConnection("jdbc:mysql://localhost/laundry_apps", "root", "");
                 System.out.println("Koneksi berhasil!");
             } catch (ClassNotFoundException e) {
                 JOptionPane.showMessageDialog(null, "Driver tidak ditemukan: " + e.getMessage());
@@ -22,4 +22,6 @@ public class Database {
         }
         return koneksi;
     }
+
+	
 }

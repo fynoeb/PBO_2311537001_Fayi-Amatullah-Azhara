@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-	String  nama, username, password, id;
+	String id, nama, username, password;
 
 	public String getId() {
 		return id;
@@ -35,7 +35,7 @@ public class User {
 		this.password = password;
 	}
 	
-public static boolean login(String username, String password) {
+	public static boolean login(String username, String password) {
 		boolean isLoggin = false;
 		User user = new User();
 		user.setId("1");
@@ -43,13 +43,15 @@ public static boolean login(String username, String password) {
 		user.setUsername("fulan");
 		user.setPassword("12345");
 		
-		if(user.getUsername().equalsIgnoreCase(username)
+		String usernames = user.getUsername().trim();
+		
+		if(usernames.equalsIgnoreCase(username)
 				&& user.getPassword().equalsIgnoreCase(password)) {
-					isLoggin = true;
-				} else {
-					isLoggin = false;
-				}
-				return isLoggin;
+			isLoggin = true;
+		} else {
+			isLoggin = false;
+		}
+		return isLoggin;
 	}
 
 }

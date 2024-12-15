@@ -1,43 +1,50 @@
 package table;
 
-import javax.swing.table.AbstractTableModel;
 import java.util.List;
+
+import javax.swing.table.AbstractTableModel;
+
 import model.Service;
 
-public class TableService extends AbstractTableModel {
-    private List<Service> services;
-    private String[] columnNames = {"ID", "Jenis", "Status", "Harga", "Quantity", "Harga per Unit"};
+public class TableService extends AbstractTableModel{
+	List<Service> ls;
+	private String[] columnNames = {"ID", "Jenis", "Status", "Harga"};
+	public TableService(List<Service> ls) {
+		this.ls = ls;
+	}
+	
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return ls.size();
+	}
 
-    public TableService(List<Service> services) {
-        this.services = services;
-    }
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return columnNames.length;
+	}
 
-    @Override
-    public int getRowCount() {
-        return services.size();
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		switch (columnIndex) {
+		case 0:
+			return ls.get(rowIndex).getId();
+		case 1:
+			return ls.get(rowIndex).getJenis();
+		case 2:
+			return ls.get(rowIndex).getStatus();
+		case 3:
+			return ls.get(rowIndex).getHarga();
+		default:
+			return null;
+		}
+	}
+	
+	public String getColumnName(int column) {
+        return columnNames[column]; 
     }
+	
 
-    @Override
-    public int getColumnCount() {
-        return columnNames.length;
-    }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        Service service = services.get(rowIndex);
-        switch (columnIndex) {
-            case 0: return service.getId();
-            case 1: return service.getJenis();
-            case 2: return service.getStatus();
-            case 3: return service.getHarga();
-            case 4: return service.getQuantity(); // Quantity
-            case 5: return service.getHargaPcs(); // Harga per unit
-            default: return null;
-        }
-    }
-
-    @Override
-    public String getColumnName(int column) {
-        return columnNames[column];
-    }
 }
