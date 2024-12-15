@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 
 import DAO.CostumerRepo;
 import model.Costumer;
+import model.CostumerBuilder;
 import table.TabelCostumer;
 
 public class CostumerFrame extends JFrame {
@@ -110,10 +111,11 @@ public class CostumerFrame extends JFrame {
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (validateInput()) {
-                    Costumer costumer = new Costumer();
-                    costumer.setNama(txtNama.getText());
-                    costumer.setAlamat(txtAlamat.getText());
-                    costumer.setNoHp(txtNoHp.getText());
+                	Costumer costumer = new CostumerBuilder()
+    						.setNama(txtNama.getText())
+    						.setAlamat(txtAlamat.getText())
+    						.setNohp(txtNoHp.getText())
+    						.build();
                     costumerRepo.save(costumer);
                     reset();
                     loadTable();
@@ -128,11 +130,12 @@ public class CostumerFrame extends JFrame {
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (selectedId != null && validateInput()) {
-                    Costumer costumer = new Costumer();
-                    costumer.setId(selectedId);
-                    costumer.setNama(txtNama.getText());
-                    costumer.setAlamat(txtAlamat.getText());
-                    costumer.setNoHp(txtNoHp.getText());
+                	Costumer costumer = new CostumerBuilder()
+							.setNama(txtNama.getText())
+							.setAlamat(txtAlamat.getText())
+							.setNohp(txtNoHp.getText())
+							.setId(selectedId)
+							.build();
                     costumerRepo.update(costumer);
                     reset();
                     loadTable();

@@ -38,7 +38,7 @@ public class TabelCostumer extends AbstractTableModel {
             case 2:
                 return costumer.getAlamat();
             case 3:
-                return costumer.getNoHp();
+                return costumer.getNohp();
             default:
                 return null;
         }

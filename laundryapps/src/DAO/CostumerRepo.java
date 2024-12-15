@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import config.Database;
 import model.Costumer;
+import model.CostumerBuilder;
 
 public class CostumerRepo implements CostumerDAO {
     private Connection connection;
@@ -29,7 +30,7 @@ public class CostumerRepo implements CostumerDAO {
         try (PreparedStatement st = connection.prepareStatement(insert)) {
             st.setString(1, costumer.getNama());
             st.setString(2, costumer.getAlamat());
-            st.setString(3, costumer.getNoHp());
+            st.setString(3, costumer.getNohp());
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,11 +44,12 @@ public class CostumerRepo implements CostumerDAO {
         try (Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(select)) {
             while (rs.next()) {
-                Costumer costumer = new Costumer();
-                costumer.setId(rs.getString("id"));
-                costumer.setNama(rs.getString("nama"));
-                costumer.setAlamat(rs.getString("alamat"));
-                costumer.setNoHp(rs.getString("noHp"));
+            	Costumer costumer = new CostumerBuilder()
+						.setId(rs.getString("id"))
+						.setNama(rs.getString("nama"))
+						.setAlamat(rs.getString("alamat"))
+						.setNohp(rs.getString("nohp"))
+						.build();
                 costumers.add(costumer);
             }
         } catch (SQLException e) {
@@ -62,7 +64,7 @@ public class CostumerRepo implements CostumerDAO {
         try (PreparedStatement st = connection.prepareStatement(update)) {
             st.setString(1, costumer.getNama());
             st.setString(2, costumer.getAlamat());
-            st.setString(3, costumer.getNoHp());
+            st.setString(3, costumer.getNohp());
             st.setString(4, costumer.getId());
             st.executeUpdate();
         } catch (SQLException e) {
